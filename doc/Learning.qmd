@@ -93,3 +93,9 @@ nhanes_small %>%
   ) %>%
   knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status.")
 ```
+
+
+## Inserting images
+![Floof](Images/Malamute.jpeg){#fig-dog}
+
+
