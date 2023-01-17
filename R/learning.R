@@ -1,4 +1,6 @@
-# packages
+# Packages ----------------------------------------------------------------
+# when loading a package then need to call library so have access to all
+# put at start of script
 library(tidyverse)
 library(NHANES)
 
@@ -23,12 +25,6 @@ summary(airquality)
 2 + 2
 # cmd shft p then stle activel file
 2 + 2
-
-
-# Packages ----------------------------------------------------------------
-# when loading opackage then need to call library so have access to all
-# put at start of script
-
 
 # This will be used for testing out Git.
 
@@ -160,3 +156,20 @@ nhanes_modified <- nhanes_small %>% # Specifying dataset
   )
 
 nhanes_modified
+
+# Summarising -------------------------------------------------------------
+# will only give 1 row unless grouped based on data from a specific column, eg yes no or NA diabetes groups, where as mutate gives the whole table.
+nhanes_small %>%
+  filter(!is.na(diabetes)) %>%
+  group_by(
+    diabetes,
+    phys_active
+  ) %>%
+  summarise(
+    max_bmi = max(bmi,
+      na.rm = TRUE
+    ),
+    min_bmi = min(bmi,
+      na.rm = TRUE
+    )
+  )
