@@ -1,3 +1,7 @@
+#packages
+library(tidyverse)
+library(NHANES)
+
 10
 # cntrl shft p for new section
 # R basics ----------------------------------------------------------------
@@ -24,6 +28,31 @@ summary(airquality)
 # Packages ----------------------------------------------------------------
 #when loading opackage then need to call library so have access to all
 #put at start of script
-library(tidyverse)
+
 
 #This will be used for testing out Git.
+
+
+# Looking at data ---------------------------------------------------------
+
+glimpse(NHANES)
+colnames(NHANES)
+
+select(NHANES, Age, Weight, BMI)
+select(NHANES, -HeadCirc)
+select(NHANES, starts_with("BP"))
+select(NHANES, ends_with("Day"))
+select (NHANES, contains("Age"))
+
+nhanes_small <- select(
+    NHANES,
+    Age,
+    Gender,
+    BMI,
+    Diabetes,
+    PhysActive,
+    BPSysAve,
+    BPDiaAve,
+    Education
+)
+nhanes_small
