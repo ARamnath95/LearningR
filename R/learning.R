@@ -172,4 +172,14 @@ nhanes_small %>%
     min_bmi = min(bmi,
       na.rm = TRUE
     )
-  )
+  ) %>%
+    ungroup()
+#check ungrouping
+#nhanes_small
+#always end with ungroup so that it doesn't mess up downstream analysis
+
+#here::here tells R where to save file, go to this proj root and look for "data" folder
+write_csv(
+    nhanes_small,
+    here::here("data/nhanes_small.csv")
+)
