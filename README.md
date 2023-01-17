@@ -1,4 +1,3 @@
-Hello 2
 Test of Github push.
 Test of Github pull.
 TODO: Add more to the title of your project here
