@@ -1,3 +1,4 @@
+#Here's an example of a conflict.
 10
 # cntrl shft p for new section
 # R basics ----------------------------------------------------------------
