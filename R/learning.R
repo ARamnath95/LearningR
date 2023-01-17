@@ -1,3 +1,4 @@
+# When a conflict happens.
 10
 # cntrl shft p for new section
 # R basics ----------------------------------------------------------------
