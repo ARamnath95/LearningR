@@ -84,3 +84,17 @@ nhanes_small %>%
 nhanes_small %>%
   select(phys_active) %>%
   rename(physically_active = phys_active)
+
+
+# Exercise 7.8 ------------------------------------------------------------
+
+nhanes_small %>%
+  select(bp_sys_ave, bp_dia_ave, education) %>%
+  rename(bp_sys = bp_sys_ave) %>%
+  rename(bp_dia = bp_dia_ave) %>%
+  nhanes_small() %>%
+  select(bmi, contains("age"))
+
+nhanes_small %>%
+  select(starts_with("bp_")) %>%
+  rename(bp_systolic = bp_sys_ave)
