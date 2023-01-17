@@ -4,6 +4,39 @@ author: "Andrea Ramnath"
 format: html
 ---
 
+- Andrea
+- Chemical Biology
+- Chalmers
+
+# Intro
+
+**Science**
+
+*Biology*
+
+# Methods and Results
+
+**Experiment**
+
+*Figures*
+
+## Analysis
+
+**Outcome**
+
+*Next*
+
+# Discussion
+
+**Conclusion**
+
+*Going forward.*
+
+```{r}
+2 + 2
+```
+
+
 ```{r setup}
 #| include: false
 library(tidyverse)
