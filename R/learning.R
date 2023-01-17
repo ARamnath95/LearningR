@@ -37,7 +37,7 @@ summary(airquality)
 
 glimpse(NHANES)
 colnames(NHANES)
-
+#first object is always the dataset.
 select(NHANES, Age, Weight, BMI)
 select(NHANES, -HeadCirc)
 select(NHANES, starts_with("BP"))
@@ -55,4 +55,27 @@ nhanes_small <- select(
     BPDiaAve,
     Education
 )
+
+# Fixing variable names ---------------------------------------------------
+
+nhanes_small <- rename_with(
+    nhanes_small,
+    snakecase::to_snake_case
+)
+
+nhanes_small <- rename(
+    nhanes_small,
+    sex=gender
+)
+
+nhanes_small %>%
+    select(phys_active) %>%
+    rename(physically_active=phys_active)
+
 nhanes_small
+
+
+# Piping  -----------------------------------------------------------------
+
+
+
