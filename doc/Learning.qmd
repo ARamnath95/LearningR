@@ -234,19 +234,19 @@ nhanes_small %>%
 Q: How does BMI relate to systolic blood pressure and age?
 
 ```{r}
-nhanes_small %>% 
-    ggplot(aes(x=bmi, y=bp_sys_ave, colour=age)) +
-    geom_point(na.rm = TRUE)
+nhanes_small %>%
+  ggplot(aes(x = bmi, y = bp_sys_ave, colour = age)) +
+  geom_point(na.rm = TRUE)
 ```
 
 
 Q: How does BMI relate to systolic blood pressure, and what is different between those with and without diabetes?
 
 ```{r}
-nhanes_small %>% 
-    ggplot(aes(x=bmi, y=bp_sys_ave, colour=diabetes)) +
-    geom_point(na.rm = TRUE) +
-    facet_grid(cols = vars(diabetes))
+nhanes_small %>%
+  ggplot(aes(x = bmi, y = bp_sys_ave, colour = diabetes)) +
+  geom_point(na.rm = TRUE) +
+  facet_grid(cols = vars(diabetes))
 ```
 
 
@@ -255,26 +255,42 @@ nhanes_small %>%
 Q: How does BMI relate to systolic blood pressure, and what is the influence of diabetes and education, and age?
 
 ```{r}
-nhanes_small %>% 
-    filter(!is.na(diabetes), !is.na(education)) %>% 
-    ggplot(aes(x=bmi, y=bp_sys_ave, colour=age)) +
-    geom_point(na.rm = TRUE) +
-    facet_grid(rows = vars(diabetes),
-               cols = vars(education))
+nhanes_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  ggplot(aes(x = bmi, y = bp_sys_ave, colour = age)) +
+  geom_point(na.rm = TRUE) +
+  facet_grid(
+    rows = vars(diabetes),
+    cols = vars(education)
+  )
 ```
 
 
 ## Scales and themes 
 
 ```{r}
-base_plot <- nhanes_small %>% 
-    filter(!is.na(diabetes), !is.na(education)) %>% 
-    ggplot(aes(x=bmi, y=bp_sys_ave, colour=age)) +
-    geom_point(na.rm = TRUE) +
-    facet_grid(rows = vars(diabetes),
-               cols = vars(education))
+base_plot <- nhanes_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  ggplot(aes(x = bmi, y = bp_sys_ave, colour = age)) +
+  geom_point(na.rm = TRUE) +
+  facet_grid(
+    rows = vars(diabetes),
+    cols = vars(education)
+  )
 
-base_plot +
-    scale_colour_viridis_c()
+final_plot <- base_plot +
+  scale_colour_viridis_c() +
+  theme_bw() +
+  labs(title="BMI, Systolic blood pressure, and age by diabetes and education.",
+       y="Systolic blood pressure (mmHg)",
+       x= "BMI (kg/m2)")
 ```
 
+
+## Saving plots
+
+```{r}
+ggsave(here::here("doc/images/scatterplot.pdf"), 
+       final_plot, 
+       width = 7, height = 5)
+```
